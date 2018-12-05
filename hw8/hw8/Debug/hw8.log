@@ -1,3 +1,3 @@
 ﻿  hw8.cpp
-c:\users\lewis\documents\github\hw8\hw8\hw8\hw8.cpp(99): warning C4018: '<': signed/unsigned mismatch
+c:\users\lewis\documents\github\hw8\hw8\hw8\hw8.cpp(98): warning C4018: '<': signed/unsigned mismatch
   hw8.vcxproj -> C:\Users\Lewis\Documents\GitHub\HW8\hw8\Debug\hw8.exe
