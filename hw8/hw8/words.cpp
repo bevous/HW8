@@ -29,9 +29,29 @@ void words::setWord(string w)
 	word = w;
 }
 
+void words::setLines(string l)
+{
+	lineNumbers = l;
+}
+
+void words::setCount(int c)
+{
+	numberOfTimes = c;
+}
+
 string words::getWord()const
 {
 	return word;
+}
+
+string words::getLines() const
+{
+	return lineNumbers;
+}
+
+int words::getCount() const
+{
+	return numberOfTimes;
 }
 
 
@@ -67,6 +87,6 @@ bool words::operator!=(const words &rh)const
 
 ostream & operator<<(ostream & out, words &cat)
 {
-	out << cat.getWord();
+	out << cat.getWord() << "(" << cat.getCount() << ") " << cat.getLines();
 	return out;
 }

@@ -92,39 +92,41 @@ set<words> makeSet() {
 vector<string> getLines(vector<string>& lines, set<words>& book) {
 	string lineNums = "";
 	string buffer = "";
+	vector<int> totalCount;
+	int wordnum = 0;
 	vector<string> text = myText();
 	for (auto word : book) {
-		cout << word << endl;
+		cout << word.getWord() << endl;
+		totalCount.push_back(0);
 		for (int linenum = 0; linenum < text.size(); linenum++) {
 			istringstream thistext(text[linenum]);
 			getline(thistext, buffer);
 
-			//cout << "$$" << buffer << "$$" << endl;
-			if (buffer.find(word.getWord())) {
-				string buff2 = "";
-				istringstream s(buffer);
-				while (getline(s, buff2, ' ')) {
-					if (buff2 == word.getWord()) {
-						if (lineNums == "") {
-							lineNums = to_string(linenum);
-						}
-						else {
-							lineNums += "," + to_string(linenum);
-						}
-						break;
+			string buff2 = "";
+			istringstream s(buffer);
+			while (getline(s, buff2, ' ')) {
+				if (buff2 == word.getWord()) {
+					if (lineNums == "") {
+						lineNums += to_string(linenum);
+						totalCount[wordnum]++;
+					}
+					else {
+						lineNums += "," + to_string(linenum);
+						totalCount[wordnum]++;
 					}
 				}
 			}
-			lines.push_back(lineNums);
-			lineNums = "";
 		}
+		word.setLines(lineNums);
+		word.setCount(totalCount[wordnum]);
+		lineNums = "";
+		wordnum++;
 	}
 	
 	return lines;
 }
 
-int main()
-{
+void bleh() {
 	set<words> book;
 	vector<string> lines;
 	book = makeSet();
@@ -133,10 +135,15 @@ int main()
 	outf.open("mywords.csv");
 	int x = 0;
 	for (auto word : book) {
-		outf << word << ", " << lines[x] << endl;
-		cout << word << ", " << lines[x] << endl;
+		outf << word <<endl;
+		cout << word <<endl;
 		x++;
 	}
+}
+
+int main()
+{
+	bleh();
 
 	system("pause");
 	return 0;
