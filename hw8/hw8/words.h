@@ -11,6 +11,7 @@ private:
 	int compare_to(const words&)const;
 public:
 	words();
+	words(int n,string w,string l);
 	~words();
 
 	//set

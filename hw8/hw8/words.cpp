@@ -17,10 +17,14 @@ int words::compare_to(const words &other)const
 
 words::words()
 {
-	numberOfTimes = 0;
-	lineNumbers = "";
 }
 
+words::words(int n = 0, string w= "", string l="")
+{
+	numberOfTimes = n;
+	lineNumbers = l;
+	word = w;
+}
 
 words::~words()
 {
