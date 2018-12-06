@@ -6,8 +6,8 @@ class words
 {
 private:
 	string word="";
-	int numberOfTimes = 0;
-	string lineNumbers = "";
+	int numberOfTimes;
+	string lineNumbers;
 	int compare_to(const words&)const;
 public:
 	words();
@@ -22,6 +22,7 @@ public:
 	string getLines()const;
 	int getCount()const;
 	//compare operators
+	void operator=(words&);
 	bool operator< (const words&)const;
 	bool operator> (const words&)const;
 	bool operator<= (const words&)const;

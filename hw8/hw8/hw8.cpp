@@ -89,15 +89,14 @@ set<words> makeSet() {
 	return book;
 }
 
-vector<string> getLines(vector<string>& lines, set<words>& book) {
+set<words> getInfo(set<words> book) {
 	string lineNums = "";
 	string buffer = "";
-	vector<int> totalCount;
+	int totalCount=0;
 	int wordnum = 0;
 	vector<string> text = myText();
 	for (auto word : book) {
 		cout << word.getWord() << endl;
-		totalCount.push_back(0);
 		for (int linenum = 0; linenum < text.size(); linenum++) {
 			istringstream thistext(text[linenum]);
 			getline(thistext, buffer);
@@ -106,38 +105,41 @@ vector<string> getLines(vector<string>& lines, set<words>& book) {
 			istringstream s(buffer);
 			while (getline(s, buff2, ' ')) {
 				if (buff2 == word.getWord()) {
+					totalCount++;
 					if (lineNums == "") {
 						lineNums += to_string(linenum);
-						totalCount[wordnum]++;
+						
 					}
 					else {
 						lineNums += "," + to_string(linenum);
-						totalCount[wordnum]++;
 					}
 				}
 			}
 		}
 		word.setLines(lineNums);
-		word.setCount(totalCount[wordnum]);
+		word.setCount(totalCount);
 		lineNums = "";
+		totalCount = 0;
 		wordnum++;
 	}
 	
-	return lines;
+	for (auto word : book) {
+		//outf << word << endl;
+		cout << word << endl;
+	}
+
+	return book;
 }
 
 void bleh() {
 	set<words> book;
-	vector<string> lines;
 	book = makeSet();
-	lines = getLines(lines, book);
+	book = getInfo(book);
 	ofstream outf;
 	outf.open("mywords.csv");
-	int x = 0;
 	for (auto word : book) {
 		outf << word <<endl;
 		cout << word <<endl;
-		x++;
 	}
 }
 

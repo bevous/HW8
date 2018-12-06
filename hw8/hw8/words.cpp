@@ -17,6 +17,8 @@ int words::compare_to(const words &other)const
 
 words::words()
 {
+	numberOfTimes = 0;
+	lineNumbers = "";
 }
 
 
@@ -54,6 +56,13 @@ int words::getCount() const
 	return numberOfTimes;
 }
 
+
+void words::operator=(words &rh)
+{
+	this->setLines(rh.getLines());
+	this->setCount(rh.getCount());
+	this->setWord(rh.getWord());
+}
 
 bool words::operator<(const words &rh)const
 {
