@@ -21,6 +21,9 @@
     <ClInclude Include="words.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="concordance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -30,6 +33,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="words.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="concordance.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
